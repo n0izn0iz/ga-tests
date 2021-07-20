@@ -1,0 +1,21 @@
+name: main
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+  - uses: dorny/paths-filter@v2
+    id: changes
+    with:
+      filters: |
+        trigger:
+          - "!**/no-trigger/**", "!**/.git/**"
+
+  - name: Cache foo
+  if: steps.changes.outputs.not-js == 'true'
+  uses: actions/cache@v2.1.6
+  with:
+    path: foo
+    key: foo-${{ github.ref }}-${{ github.sha }}
+    restore-keys: foo-refs/heads/master-
