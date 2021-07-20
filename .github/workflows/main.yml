@@ -14,9 +14,9 @@ steps:
           - "!**/no-trigger/**", "!**/.git/**"
 
   - name: Cache foo
-  if: steps.changes.outputs.not-js == 'true'
-  uses: actions/cache@v2.1.6
-  with:
-    path: foo
-    key: foo-${{ github.ref }}-${{ github.sha }}
-    restore-keys: foo-refs/heads/master-
+    if: steps.changes.outputs.not-js == 'true'
+    uses: actions/cache@v2.1.6
+    with:
+      path: foo
+      key: foo-${{ github.ref }}-${{ github.sha }}
+      restore-keys: foo-refs/heads/master-
