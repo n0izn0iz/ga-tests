@@ -14,7 +14,8 @@ jobs:
         with:
           filters: |
             trigger:
-              - "**/no-trigger/**", "**/.git/**"
+              - "**/no-trigger/**"
+              - "**/.git/**"
 
       - name: Cache foo
         if: steps.changes.outputs.trigger == 'false'
