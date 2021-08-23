@@ -9,6 +9,8 @@ jobs:
   main-job:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+
       - uses: dorny/paths-filter@v2
         id: changes
         with:
