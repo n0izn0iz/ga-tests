@@ -27,5 +27,4 @@ jobs:
           restore-keys: foo-refs/heads/master-
       
       - name: Make foo
-        if: steps.changes.outputs.trigger == 'false'
         run: make foo
