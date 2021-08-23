@@ -5,21 +5,23 @@ on:
       - master
   pull_request:
 
-steps:
-  - uses: dorny/paths-filter@v2
-    id: changes
-    with:
-      filters: |
-        trigger:
-          - "**/no-trigger/**", "**/.git/**"
+jobs:
+  main-job:
+    steps:
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            trigger:
+              - "**/no-trigger/**", "**/.git/**"
 
-  - name: Cache foo
-    if: steps.changes.outputs.trigger == 'false'
-    uses: actions/cache@v2.1.6
-    with:
-      path: foo
-      key: foo-${{ github.ref }}-${{ github.sha }}
-      restore-keys: foo-refs/heads/master-
-  
-  - name: Make foo
-    if: steps.changes.outputs.trigger == 'true'
+      - name: Cache foo
+        if: steps.changes.outputs.trigger == 'false'
+        uses: actions/cache@v2.1.6
+        with:
+          path: foo
+          key: foo-${{ github.ref }}-${{ github.sha }}
+          restore-keys: foo-refs/heads/master-
+      
+      - name: Make foo
+        if: steps.changes.outputs.trigger == 'true'
