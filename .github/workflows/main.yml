@@ -14,11 +14,10 @@ jobs:
         with:
           filters: |
             trigger:
-              - "**/no-trigger/**"
-              - "**/.git/**"
+              - "!**/no-trigger/**"
 
       - name: Cache foo
-        if: steps.changes.outputs.trigger == 'false'
+        if: steps.changes.outputs.trigger == 'true'
         uses: actions/cache@v2.1.6
         with:
           path: foo
@@ -26,5 +25,5 @@ jobs:
           restore-keys: foo-refs/heads/master-
       
       - name: Make foo
-        if: steps.changes.outputs.trigger == 'true'
+        if: steps.changes.outputs.trigger == 'false'
         run: make foo
