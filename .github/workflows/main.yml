@@ -28,7 +28,7 @@ jobs:
           restore-keys: foo-refs/heads/master-
 
       - name: Debug
-        run: echo {{ steps.cache.outputs.cache-hit }}
+        run: echo ${{ steps.cache.outputs.cache-hit }}
 
       - name: Touch foo
         if: steps.cache.outputs.cache-hit == 'true'
