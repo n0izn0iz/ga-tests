@@ -27,6 +27,9 @@ jobs:
           key: foo-${{ github.ref }}-${{ github.sha }}
           restore-keys: foo-refs/heads/master-
 
+      - name: Debug
+        run: echo {{ steps.cache.outputs.cache-hit }}
+
       - name: Touch foo
         if: steps.cache.outputs.cache-hit == 'true'
         run: touch foo
