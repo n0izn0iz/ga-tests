@@ -26,9 +26,9 @@ jobs:
           key: foo-${{ github.ref }}-${{ github.sha }}
           restore-keys: foo-refs/heads/master-
       
-      # - name: Touch foo
-      #   if: steps.changes.outputs.trigger != 'true'
-      #   run: touch foo
+      - name: Touch foo
+        if: steps.changes.outputs.trigger != 'true'
+        run: touch foo
 
       - name: Make foo
         run: make foo
