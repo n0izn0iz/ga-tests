@@ -19,7 +19,7 @@ jobs:
               - "!**/no-trigger/**"
 
       - name: Cache foo
-        id: cache-foo
+        id: cache
         if: steps.changes.outputs.trigger == 'true'
         uses: actions/cache@v2.1.6
         with:
@@ -28,7 +28,7 @@ jobs:
           restore-keys: foo-refs/heads/master-
 
       - name: Touch foo
-        if: steps.cache-foo.outputs.cache-hit == 'true'
+        if: steps.cache.outputs.cache-hit == 'true'
         run: touch foo
       
       - name: Make foo
