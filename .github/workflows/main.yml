@@ -19,7 +19,6 @@ jobs:
               - "!**/no-trigger/**"
 
       - name: Cache foo
-        id: cache
         if: steps.changes.outputs.trigger == 'true'
         uses: actions/cache@v2.1.6
         with:
