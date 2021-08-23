@@ -1,0 +1,11 @@
+{
+  "name": "ga-tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:n0izn0iz/ga-tests.git",
+  "author": "Norman Meier <norman@berty.tech>",
+  "license": "MIT",
+  "dependencies": {
+    "picomatch": "^2.3.0"
+  }
+}

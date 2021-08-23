@@ -11,12 +11,15 @@ steps:
     with:
       filters: |
         trigger:
-          - "!**/no-trigger/**", "!**/.git/**"
+          - "**/no-trigger/**", "**/.git/**"
 
   - name: Cache foo
-    if: steps.changes.outputs.not-js == 'true'
+    if: steps.changes.outputs.trigger == 'false'
     uses: actions/cache@v2.1.6
     with:
       path: foo
       key: foo-${{ github.ref }}-${{ github.sha }}
       restore-keys: foo-refs/heads/master-
+  
+  - name: Make foo
+    if: steps.changes.outputs.trigger == 'true'
