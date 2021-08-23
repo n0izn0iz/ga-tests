@@ -25,3 +25,4 @@ jobs:
       
       - name: Make foo
         if: steps.changes.outputs.trigger == 'true'
+        run: make foo
