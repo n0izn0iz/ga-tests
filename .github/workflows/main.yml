@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Cache foo
-        uses: n0izn0iz/mkache@v3.0.4
+        uses: n0izn0iz/mkache@v3.0.5
         with:
           rule: foo
           key: foo
